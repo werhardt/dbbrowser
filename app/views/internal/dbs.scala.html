@@ -1,4 +1,4 @@
-@(dbs: List[String])(implicit messages: Messages)
+@(dbs: List[String])(implicit messages: Messages, flash: Flash)
 @internal.maininternal(Messages("views.dbs.title")) {
   <ul>
   @for(db <- dbs) {

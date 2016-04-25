@@ -1,4 +1,4 @@
-@(collections: List[String], db: String)(implicit messages: Messages)
+@(collections: List[String], db: String)(implicit messages: Messages, flash: Flash)
 @internal.maininternal(Messages("views.collections.title")) {
 
   <h3>@db</h3>

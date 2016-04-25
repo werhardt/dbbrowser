@@ -7,7 +7,7 @@ import actions.SecureAction
 import forms.ConnectionForm
 import forms.ConnectionForm.ConnectionData
 import models.Connection
-import play.api.i18n.{I18nSupport, MessagesApi}
+import play.api.i18n.{I18nSupport, Messages, MessagesApi}
 import play.api.mvc._
 import services.{ConnectionService, Mongo}
 
@@ -23,7 +23,7 @@ class ConnectionController @Inject()(mongo: Mongo,
 
 
 
-  def listConnections = secureAction.async {
+  def listConnections = secureAction.async { implicit request =>
 
     val futureConnections = connectionService.findAll
 
@@ -32,7 +32,7 @@ class ConnectionController @Inject()(mongo: Mongo,
     }
   }
 
-  def addConnection() = secureAction {
+  def addConnection() = secureAction { implicit request =>
     Ok(views.html.internal.connectionForm(ConnectionForm.connectionForm))
   }
 
@@ -48,11 +48,11 @@ class ConnectionController @Inject()(mongo: Mongo,
     }
 
     futureResult.map { result =>
-      Redirect(routes.ConnectionController.listConnections())
+      Redirect(routes.ConnectionController.listConnections()).flashing("success" -> Messages("views.connections.save.success"))
     }
   }
 
-  def editConnection(id: String) = secureAction.async {
+  def editConnection(id: String) = secureAction.async { implicit request =>
 
     val futureConnection = connectionService.find(id)
 
@@ -67,7 +67,7 @@ class ConnectionController @Inject()(mongo: Mongo,
     val futureResult = connectionService.delete(id)
 
     futureResult.map { result =>
-      Redirect(routes.ConnectionController.listConnections())
+      Redirect(routes.ConnectionController.listConnections()).flashing("success" -> Messages("views.connections.delete.success"))
     }
   }
 }

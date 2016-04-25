@@ -7,6 +7,7 @@ views.documents.title=Documents
 views.documents.docs={0} Documents
 views.documents.no=No. {0}
 views.documents.filter=Filter
+views.documents.filter.help=Filter usage: JSON without outer curly braces (e.g.: "username": "John")
 views.documents.btn.filter=Filter
 views.login.title=Login
 views.login.btn.login=Login
@@ -16,6 +17,8 @@ views.login.password=Password
 views.connections.header=Connections
 views.connections.title=Connections
 views.connections.add=Add connection
+views.connections.save.success=Connection saved
+views.connections.delete.success=Connection deleted
 
 views.connectionForm.header=Configure connection
 views.connectionForm.dbName=DB Name

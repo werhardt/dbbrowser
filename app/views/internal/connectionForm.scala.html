@@ -1,6 +1,6 @@
 @import forms.ConnectionForm.ConnectionData
 @import b3.vertical.fieldConstructor
-@(connectionForm: Form[ConnectionData])(implicit messages: Messages)
+@(connectionForm: Form[ConnectionData])(implicit messages: Messages, flash: Flash)
 
 @internal.maininternal(Messages("views.connections.title")) {
 
@@ -15,9 +15,8 @@
 
     <input type="hidden" name="_id" value="@connectionForm("_id").value" />
     @b3.text(connectionForm("name"), '_label -> Messages("views.connectionForm.name"))
-    @b3.select(connectionForm("dbType"), helper.options(("mysql", "MySQL"), ("mongodb", "MongoDB")), '_label -> Messages("views.connectionForm.dbType"))
+    @b3.select(connectionForm("dbType"), helper.options(("mongodb", "MongoDB"), ("mysql", "MySQL")), '_label -> Messages("views.connectionForm.dbType"))
     @b3.text(connectionForm("dbName"), '_label -> Messages("views.connectionForm.dbName"))
     @b3.submit('class -> "btn btn-primary"){@Messages("views.save")}
   }
-
 }

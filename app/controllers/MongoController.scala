@@ -32,7 +32,7 @@ class MongoController @Inject()(mongo: Mongo,
     }
   }
 
-  def listCollections(db: String) = secureAction.async {
+  def listCollections(db: String) = secureAction.async { implicit request =>
 
     val futureCollections = mongo.listCollections(db)
 

@@ -1,10 +1,22 @@
-@(title: String)(content: Html)(implicit messages: Messages)
+@(title: String)(content: Html)(implicit messages: Messages, flash: Flash)
 @main(title) {
 
 
   <div class="container">
       @internal.navigation()
       <div id="content" >
+          @if(flash.get("error").isDefined) {
+              <div id="messages">
+                  <div id="message" class="alert alert-danger" role="alert">@flash.get("error").get</div>
+              </div>
+          }
+
+          @if(flash.get("success").isDefined) {
+              <div id="messages">
+                  <div id="message" class="alert alert-success" role="alert">@flash.get("success").get</div>
+              </div>
+          }
+
         @content
       </div>
   </div>
