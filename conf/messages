@@ -1,0 +1,34 @@
+error.passwordsDontMatch = Passwords don't match
+error.password.minLength = Password should be at least 6 characters
+
+views.dbs.title=Databases
+views.collections.title=Collections
+views.documents.title=Documents
+views.documents.docs={0} Documents
+views.documents.no=No. {0}
+views.documents.filter=Filter
+views.documents.btn.filter=Filter
+views.login.title=Login
+views.login.btn.login=Login
+views.login.username=Username
+views.login.password=Password
+
+views.connections.header=Connections
+views.connections.title=Connections
+views.connections.add=Add connection
+
+views.connectionForm.header=Configure connection
+views.connectionForm.dbName=DB Name
+views.connectionForm.dbType=DB Type
+views.connectionForm.name=Name
+
+views.save=Save
+views.delete=Delete
+
+error.title=Error
+error.forbidden=Forbidden
+
+views.logout=Logout
+
+login.unkown_username=Unknown username
+login.wrong_password=Password not correct

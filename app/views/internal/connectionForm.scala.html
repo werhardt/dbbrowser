@@ -1,0 +1,23 @@
+@import forms.ConnectionForm.ConnectionData
+@import b3.vertical.fieldConstructor
+@(connectionForm: Form[ConnectionData])(implicit messages: Messages)
+
+@internal.maininternal(Messages("views.connections.title")) {
+
+  <h2>@Messages("views.connectionForm.header")</h2>
+
+  @if(connectionForm("_id").value.isDefined) {
+    @b3.form(action = routes.ConnectionController.deleteConnection(connectionForm("_id").value.get)) {
+      @b3.submit('class -> "btn btn-danger"){@Messages("views.delete")}
+    }
+  }
+  @b3.form(action = routes.ConnectionController.saveConnection()) {
+
+    <input type="hidden" name="_id" value="@connectionForm("_id").value" />
+    @b3.text(connectionForm("name"), '_label -> Messages("views.connectionForm.name"))
+    @b3.select(connectionForm("dbType"), helper.options(("mysql", "MySQL"), ("mongodb", "MongoDB")), '_label -> Messages("views.connectionForm.dbType"))
+    @b3.text(connectionForm("dbName"), '_label -> Messages("views.connectionForm.dbName"))
+    @b3.submit('class -> "btn btn-primary"){@Messages("views.save")}
+  }
+
+}

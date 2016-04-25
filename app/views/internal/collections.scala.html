@@ -1,0 +1,15 @@
+@(collections: List[String], db: String)(implicit messages: Messages)
+@internal.maininternal(Messages("views.collections.title")) {
+
+  <h3>@db</h3>
+
+  <ul>
+  @for(col <- collections) {
+    <li>
+      <a class="brand" href="@routes.MongoController.listDocuments(db, col)">
+      @col
+      </a>
+    </li>
+  }
+  </ul>
+}

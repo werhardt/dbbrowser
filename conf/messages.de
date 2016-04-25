@@ -1,0 +1,11 @@
+error.passwordsDontMatch = Passwords don't match
+error.password.minLength = Password should be at least 6 characters
+
+views.dbs.title=Datenbanken
+views.collections.title=Collections
+views.documents.title=Dokumente
+views.documents.backToCollection=zurück zu Collections
+views.documents.docs=Dokumente
+views.documents.no=Nr.
+views.documents.filter=Filter setzen
+views.documents.btn.filter=Filtern

@@ -1,0 +1,26 @@
+@()(implicit messages: Messages, flash: Flash)
+@mainpublic(Messages("views.login.title")) {
+
+
+
+    <div align="center" class="container login-container">
+
+        @if(flash.get("error").isDefined) {
+            <div id="messages">
+                <div id="message" class="alert alert-danger" role="alert">@flash.get("error").get</div>
+            </div>
+        }
+
+        @helper.form(action = routes.AuthController.doLogin()) {
+
+            <label for="login">@Messages("views.login.username")</label>
+            <input id="login" class="form-control input-width-200" name="username" type="text" />
+
+            <label for="password">@Messages("views.login.password")</label>
+            <input id="password" class="form-control input-width-200" name="password" type="password" />
+
+            <br />
+            <input type="submit" class="btn btn-default" value="@Messages("views.login.btn.login")"/>
+        }
+    </div>
+}

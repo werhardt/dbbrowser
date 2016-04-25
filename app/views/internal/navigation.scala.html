@@ -1,0 +1,8 @@
+@()(implicit messages: Messages)
+<div id="navigation">
+  <a class="pull-right" href="@routes.AuthController.logout()"><span class="glyphicon glyphicon-log-out"> </span> @Messages("views.logout")</a>
+  <h3>
+    <a href="@routes.ConnectionController.listConnections()">Home</a>
+  </h3>
+  <hr/>
+</div>

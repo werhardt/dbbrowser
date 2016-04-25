@@ -1,0 +1,27 @@
+@(connections: List[Connection])(implicit messages: Messages)
+@internal.maininternal(Messages("views.connections.title")) {
+
+
+  <a class="btn btn-primary pull-right" href="@routes.ConnectionController.addConnection()">
+    <span class="glyphicon glyphicon-plus-sign"></span>
+    @Messages("views.connections.add")
+  </a>
+
+  <h2>@Messages("views.connections.header")</h2>
+
+  <ul>
+  @for(connection <- connections) {
+    <li>
+
+      @*<a class="brand" href="@routes.MongoController.listCollections(connection.dbName)">*@
+      <a href="/@connection.dbType/@connection.dbName">
+      @connection.name (@connection.dbType)
+      </a>
+
+      <a class="btn-sm btn-default" href="@routes.ConnectionController.editConnection(connection._id)">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </a>
+    </li>
+  }
+  </ul>
+}

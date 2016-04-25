@@ -1,0 +1,9 @@
+@(status: String)(content: Html)(implicit messages: Messages)
+
+@main(Messages("error.title") + " " + status) {
+
+    <div class="text-center">
+        <h1>@Messages("error.title") @status</h1>
+        @content
+    </div>
+}

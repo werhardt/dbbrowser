@@ -1,0 +1,34 @@
+@import org.mongodb.scala.Document
+@import play.api.libs.json.Json
+@import b3.vertical.fieldConstructor
+@(docs: List[Document], db: String, collection: String, filterForm: Form[FilterData])(implicit messages: Messages)
+@import java.math.BigInteger; var counter = 1;
+
+@internal.maininternal(Messages("views.documents.title")) {
+
+
+  <h3><a class="brand" href="@routes.MongoController.listCollections(db)">@db</a> \ @collection</h3>
+
+
+  <br/>
+
+  @b3.form(action = routes.MongoController.listDocuments(db, collection)) {
+
+    @b3.text(filterForm("filter"), '_label -> (Messages("views.documents.btn.filter") +":"))
+    @b3.submit('class -> "btn btn-primary"){@Messages("views.documents.btn.filter")}
+  }
+
+
+  <br/>
+  <b>@Messages("views.documents.docs", docs.size)</b>
+  <br/>
+
+  @for((doc) <- docs) {
+    @Messages("views.documents.no", counter)
+    <pre>@Html(Json.prettyPrint(Json.parse(doc.toJson())))</pre>
+
+    @{
+      counter += 1
+    }
+  }
+}

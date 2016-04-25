@@ -1,0 +1,28 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file        controllers.Assets.at(path="/public", file)
+
+#Auth
+POST        /signup              controllers.AuthController.signup
+POST        /login               controllers.AuthController.doLogin
+GET         /                    controllers.AuthController.login
+GET         /login               controllers.AuthController.login
+GET         /logout              controllers.AuthController.logout
+GET         /secure              controllers.AuthController.securedSampleAction
+
+GET      /connections                    controllers.ConnectionController.listConnections()
+POST     /connections/save               controllers.ConnectionController.saveConnection()
+GET      /connections/add                controllers.ConnectionController.addConnection
+GET      /connections/edit/:id           controllers.ConnectionController.editConnection(id: String)
+POST     /connections/delete/:id         controllers.ConnectionController.deleteConnection(id: String)
+#POST     /connections/edit/:id           controllers.ConnectionController.updateConnection(id: String)
+#GET      /mongodb                        controllers.MongoController.listDbs()
+GET      /mongodb/:db                    controllers.MongoController.listCollections(db: String)
+POST     /mongodb/:db/:collection        controllers.MongoController.listDocuments(db: String, collection: String)
+GET      /mongodb/:db/:collection        controllers.MongoController.listDocuments(db: String, collection: String)
+
